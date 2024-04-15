@@ -1,0 +1,26 @@
+.layout-container {
+  display: grid;
+  grid-template-columns: 1fr 70%; /* Hamburger button takes auto width, menubar and outlet take the remaining space */
+  height: 100vh;
+}
+
+.sidebar-toggler {
+  grid-column: 1;
+  justify-self: start; /* Align the button to the start (left) of its grid cell */
+  align-self: flex-start; /* Center the button vertically within its grid cell */
+}
+
+.menubar {
+  grid-column: 2;
+  align-self: flex-start;
+  justify-self: end;
+}
+
+.outlet-container {
+  grid-column: 2;
+  overflow-y: auto;
+}
+
+.custom-sidebar {
+  width: 250px; /* Adjust width as needed */
+}

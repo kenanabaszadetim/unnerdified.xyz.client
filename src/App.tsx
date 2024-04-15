@@ -1,19 +1,22 @@
-import { useState } from "react";
-import { Sidebar } from "primereact/sidebar";
-import { Button } from "primereact/button";
 import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css"; //core css
 import "primeicons/primeicons.css"; //icons
 import "primeflex/primeflex.css"; // flex
-
+import { Routes, Route, Outlet, Link } from "react-router-dom";
+import NoMatch from "./components/pages/NoMatch";
+import Home from "./components/pages/Home";
+import Layout from "./components/pages/Layout";
+import Dashboard from "./components/pages/Dashboard";
 export default function App() {
-  const [visible, setVisible] = useState(false);
   return (
-    <div className="card flex justify-content-center">
-      <Sidebar visible={visible} onHide={() => setVisible(false)}>
-        <h2>Sidebar</h2>
-      </Sidebar>
-      <Button icon="pi pi-arrow-right" onClick={() => setVisible(true)} />
+    <div>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="*" element={<NoMatch />} />
+        </Route>
+      </Routes>
     </div>
   );
 }
